@@ -1,0 +1,10 @@
+version: "3"
+services:
+  docker_web_app:
+    build: .
+    ports:
+      - "3000:8080"
+    volumes:
+      - ./server.js:/usr/src/app/server.js
+    environment:
+      EXTERNAL_PORT: 3000
