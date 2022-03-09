@@ -28,7 +28,7 @@ images:
 - 'gcr.io/$PROJECT_ID/helloworld-webapp:latest'
 
 # You can organize your builds with tags
-tags: ['gcloud-build-ci-cd-samples']
+tags: ['helloworld-webapp']
 
 # You can configure more options than the ones listed here. Visit
 # https://cloud.google.com/cloud-build/docs/build-config to see the full list of
