@@ -1,6 +1,6 @@
 version: "3"
 services:
-  docker_web_app:
+  helloworld-webapp:
     build: .
     ports:
       - "3000:8080"
