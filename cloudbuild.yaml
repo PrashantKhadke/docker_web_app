@@ -17,15 +17,15 @@
 # tag it with the name of the image.
 steps:
 - name: 'docker'
-  args: ['build', '--tag=gcr.io/$PROJECT_ID/docker_web_app:$SHORT_SHA', '--tag=gcr.io/$PROJECT_ID/docker_web_app:latest', '.']
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/docker-web-app:$SHORT_SHA', '--tag=gcr.io/$PROJECT_ID/docker-web-app:latest', '.']
  
 # By default, all built docker images will be lost once the build is complete.
 # Rather than writing a build step to push this image, you can simply list the
 # image below and it will automatically be uploaded to Google Cloud Container
 # Registry.
 images:
-- 'gcr.io/$PROJECT_ID/docker_web_app:$SHORT_SHA'
-- 'gcr.io/$PROJECT_ID/docker_web_app:latest'
+- 'gcr.io/$PROJECT_ID/docker-web-app:$SHORT_SHA'
+- 'gcr.io/$PROJECT_ID/docker-web-app:latest'
 
 # You can organize your builds with tags
 tags: ['gcloud-build-ci-cd-samples']
