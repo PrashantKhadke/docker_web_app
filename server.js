@@ -12,6 +12,17 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
+app.route('/api/book')
+  .get((req, res) => {
+    res.status(200).send('Get a random book')
+  })
+  .post((req, res) => {
+    res.status(200).send('Add a book')
+  })
+  .put((req, res) => {
+    res.status(200).send('Update the book')
+  })
+  
 app.listen(8080, function() {
   console.log(`🚀 Example NodeJS app listening on internal port 8080 and external port ${EXTERNAL_PORT}`);
 });
