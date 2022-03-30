@@ -1,0 +1,28 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag helloworld-webapp:$(date +%s) --tag helloworld-webapp:latest
+    
+    # Archive and persist the Docker image
+    - name: Save Docker image
+      run: docker save --output helloworld-webapp.tar "helloworld-webapp:latest"
+    - name: Upload Docker image
+      uses: actions/upload-artifact@v2
+      with:
+        name: docker-image
+        path: helloworld-webapp.tar
+        retention-days: 1

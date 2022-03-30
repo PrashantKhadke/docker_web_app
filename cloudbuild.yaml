@@ -16,17 +16,28 @@
 # repository as source. Here we use the 'docker' image to build the image and
 # tag it with the name of the image.
 steps:
-- name: 'docker'
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/helloworld-webapp:$SHORT_SHA', '--tag=gcr.io/$PROJECT_ID/helloworld-webapp:latest', '.']
- 
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', '--all-tags'] 
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'SERVICE-NAME', '--image', 'gcr.io/$PROJECT_ID/helloworld-webapp:latest', '--region', '{$_REGION}']
+- name: 'node'
+  entrypoint: npm
+  args: ['run', 'test:system']
+  env:
+    - 'Url=$_SERVICE_URL'
 # By default, all built docker images will be lost once the build is complete.
 # Rather than writing a build step to push this image, you can simply list the
 # image below and it will automatically be uploaded to Google Cloud Container
 # Registry.
 images:
 - 'gcr.io/$PROJECT_ID/helloworld-webapp:$SHORT_SHA'
-- 'gcr.io/$PROJECT_ID/helloworld-webapp:latest'
-
+- 'gcr.io/$PROJECT_ID/helloworld-webapp:latest' 
 # You can organize your builds with tags
 tags: ['helloworld']
 
