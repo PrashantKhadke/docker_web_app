@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test" : "newman run ~/Downloads/IntegrationTesting.postman_collection.json --env-var 'baseUrl=http://localhost:9000/'"
+    "test" : "newman run postman/testcases_collection.json --env-var baseUrl=$Url"
   },
   "dependencies": {
     "express": "^4.16.1",
