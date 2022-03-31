@@ -32,7 +32,7 @@ steps:
 # Run Test Case
 - name: 'node'
   entrypoint: npm
-  args: ['run', 'test:system']
+  args: ['run', 'test']
   env:
     - 'Url=$_SERVICE_URL'
 
