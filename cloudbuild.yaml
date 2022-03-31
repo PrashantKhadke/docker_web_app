@@ -16,6 +16,11 @@
 # repository as source. Here we use the 'docker' image to build the image and
 # tag it with the name of the image.
 steps:
+# Build Nodejs
+- name: 'node'
+  entrypoint: npm
+  args: ['install']
+  
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/helloworld-webapp:$SHORT_SHA', '--tag=gcr.io/$PROJECT_ID/helloworld-webapp:latest', '.']
