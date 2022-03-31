@@ -16,18 +16,13 @@
 # repository as source. Here we use the 'docker' image to build the image and
 # tag it with the name of the image.
 steps:
-# Build Nodejs
-- name: 'node'
-  entrypoint: npm
-  args: ['install']
-  
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/helloworld-webapp:$SHORT_SHA', '--tag=gcr.io/$PROJECT_ID/helloworld-webapp:latest', '.']
 
-## Push the container image to Container Registry
-#- name: 'gcr.io/cloud-builders/docker'
-#  args: ['push', '--all-tags'] 
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['docker push gcr.io/$PROJECT_ID/helloworld-webapp:$SHORT_SHA && docker push gcr.io/$PROJECT_ID/helloworld-webapp:latest'] 
 
 ## Deploy container image to Cloud Run
 #- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -36,8 +31,7 @@ steps:
 
 # Run Test Case
 - name: 'node'
-  entrypoint: npm
-  args: ['run', 'test']
+  args: ['npm install && npm run test']
   env:
     - 'Url=$_SERVICE_URL'
 
