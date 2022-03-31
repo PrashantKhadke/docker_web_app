@@ -33,7 +33,9 @@ steps:
 
 # Run Test Case
 - name: 'node'
-  args: ['npm install && npm run test']
+  args: ['npm', 'install']
+- name: 'node'
+  args: ['npm', 'run', 'test']
   env:
     - 'Url=$_SERVICE_URL'
 
