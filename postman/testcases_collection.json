@@ -6,90 +6,50 @@
 	},
 	"item": [
 		{
-			"name": "Get Book",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"GetBookTest\",function(){",
-							"    pm.response.to.status(200);",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
+			"name": "Get Test",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YmQ4YzFlYTg1ZmY4NGM0MmFlMGQ5ZTQxOGFmMDAxMjQ6ZDRiT3EzT0N4Vk5HemVDS1NiV3J6c2lJZmc3enpCcDA=",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "{{baseUrl}}api/book",
+					"raw": "https://www.postman-echo.com/get",
+					"protocol": "https",
 					"host": [
-						"{{baseUrl}}api"
+						"www",
+						"postman-echo",
+						"com"
 					],
 					"path": [
-						"book"
+						"get"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Create Book",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"CreateBookTest\",function(){",
-							"    pm.response.to.status(200);",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
+			"name": "Post Test",
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "This is test data"
+				},
 				"url": {
-					"raw": "{{baseUrl}}api/book",
+					"raw": "https://www.postman-echo.com/post",
+					"protocol": "https",
 					"host": [
-						"{{baseUrl}}api"
+						"www",
+						"postman-echo",
+						"com"
 					],
 					"path": [
-						"book"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Book",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"UpdateBookTest\",function(){",
-							"    pm.response.to.status(200);",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"url": {
-					"raw": "{{baseUrl}}api/book",
-					"host": [
-						"{{baseUrl}}api"
-					],
-					"path": [
-						"book"
+						"post"
 					]
 				}
 			},
@@ -119,7 +79,7 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:8080/",
+			"value": "https://www.postman-echo.com/",
 			"type": "string"
 		}
 	]
