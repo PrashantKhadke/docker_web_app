@@ -9,13 +9,7 @@
 			"name": "Get Test",
 			"request": {
 				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic YmQ4YzFlYTg1ZmY4NGM0MmFlMGQ5ZTQxOGFmMDAxMjQ6ZDRiT3EzT0N4Vk5HemVDS1NiV3J6c2lJZmc3enpCcDA=",
-						"type": "text"
-					}
-				],
+				"header": [],
 				"url": {
 					"raw": "https://www.postman-echo.com/get",
 					"protocol": "https",
